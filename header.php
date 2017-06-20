@@ -7,16 +7,24 @@
     <title>Authentification PHP</title>
 </head>
 <body>
-    <form method="GET" action="inscription.php">
-        <label for="pseudo">Votre pseudo :</label>
-        <input id="pseudo" name="idpseudo" type="text" />
-        <label for="psswd">Password :</label>
-        <input id="psswd" name="idpsswd" type="password" />
-        <button>Inscription</button>
-        <button>Connexion</button>
-        </form>
-        <?php
-        $fichiers= "dossier";
-        $pseudo="idpseudo";
-        ?>
+<?php if (isset($_SESSION['utilisateur'])) { ?>
+<p> Hello! </p>
+<?php } else { ?>
+    
+    <form action="inscription.php" method="POST">
+    <label>Pseudo :</label>
+    <input type="text" name="pseudo">
+    <label>Mot de Passe :</label>
+    <input type="password" name="mdp">
+    <button>S'inscrire</button>
+</form>
+<form action="login.php" method="POST">
+    <label>Pseudo :</label>
+    <input type="text" name="pseudo">
+    <label>Mot de Passe :</label>
+    <input type="password" name="mdp">
+    <button>Connexion</button>
+</form>
+<?php } ?>
+</body>
 </html>
